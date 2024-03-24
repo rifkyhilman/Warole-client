@@ -22,6 +22,7 @@
         justify-content: space-between;
         border-bottom: 1px solid #ddd;
         padding: 0 30px 0 30px;
+        margin-bottom: 50px
     }
     #products-link {
         color: #41B883;
@@ -33,5 +34,17 @@
 
     #login-link {
         margin-right: 10px;
+    }
+
+    button {
+        background-color: #41B883;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        outline: 0;
+        padding: 16px;
     }
 </style>
