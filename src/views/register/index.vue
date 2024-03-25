@@ -2,27 +2,27 @@
 <template>
     <div id="page-wrap">
         <div class="from">
-            <form action="">
+            <form @submit.prevent="handleSubmit">
                 <span id="form-title">Register</span>
                 <div class="wrap-input">
                     <label for="name">Username</label>
-                    <input class="input" type="text" placeholder="Type your username" required>
+                    <input v-model="username" class="input" type="text" placeholder="Type your username" required>
                 </div>
                 <div class="wrap-input">
                     <label for="name">Email</label>
-                    <input class="input" type="email" placeholder="Type your email" required>
+                    <input v-model="email" class="input" type="email" placeholder="Type your email" required>
                 </div>
                 <div class="wrap-input">
                     <label for="name">Password</label>
-                    <input class="input" type="password" placeholder="Type your password" required>
+                    <input v-model="password" class="input" type="password" placeholder="Type your password" required>
                 </div>
                 <div class="wrap-input">
                     <label for="password">Region</label>
-                    <input class="input" type="text" placeholder="Type your password" required>
+                    <input v-model="region" class="input" type="text" placeholder="Type your password" required>
                 </div>
                 <div class="wrap-input">
                     <label for="number">Phone</label>
-                    <input class="input" type="number" placeholder="Type your password" required>
+                    <input v-model="phone" class="input" type="number" placeholder="Type your password" required>
                 </div>
                 <!-- <div id="text-right">Forgot Password?</div> -->
                 <button> Register </button>
@@ -33,7 +33,44 @@
 
 <script>
 export default {
+    // eslint-disable-next-line vue/multi-word-component-names
+    name: 'Register',
+    data() {
+        return {
+            username: '',
+            email: '',
+            password: '',
+            region: '',
+            phone: ''
+        }
+    },
+    methods: {
+        async handleSubmit() {
+            try {
+                const data = {
+                    name: this.username,
+                    email: this.email,
+                    password: this.password,
+                    region: this.region,
+                    phone: this.phone
+                };
+           
+                const response = await fetch('https://ecoms.zeabur.app/api/v1/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
 
+                const result = await response.json();
+                console.log("Success:", result);
+
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    }
 }
 </script>
 
