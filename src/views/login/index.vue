@@ -2,15 +2,15 @@
 <template>
     <div id="page-wrap">
         <div class="from">
-            <form action="">
+            <form @submit.prevent='handleSubmitLogin'>
                 <span id="form-title">Login</span>
                 <div class="wrap-input">
-                    <label for="name">Username</label>
-                    <input class="input" type="text" placeholder="Type your username" required>
+                    <label for="email">Email</label>
+                    <input v-model="email" class="input" type="email" placeholder="Type your email" required>
                 </div>
                 <div class="wrap-input">
-                    <label for="name">Password</label>
-                    <input class="input" type="password" placeholder="Type your password" required>
+                    <label for="password">Password</label>
+                    <input v-model="password" class="input" type="password" placeholder="Type your password" required>
                 </div>
                 <!-- <div id="text-right">Forgot Password?</div> -->
                 <button> Login </button>
@@ -21,7 +21,36 @@
 
 <script>
 export default {
+    data() {
+        return {
+            email: null,
+            password: null
+        }
+    },
+    methods: {
+        async handleSubmitLogin() {
+            try {
+                const data = {
+                    email: this.email,
+                    password: this.password
+                }
 
+                const response = await fetch('https://ecoms.zeabur.app/api/v1/auth/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    });
+
+                const result = await response.json();
+                console.log("Success:", result);
+                    
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+    }
 }
 </script>
 
