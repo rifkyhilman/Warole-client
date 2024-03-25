@@ -37,11 +37,11 @@ export default {
     name: 'Register',
     data() {
         return {
-            username: '',
-            email: '',
-            password: '',
-            region: '',
-            phone: ''
+            username: null,
+            email: null,
+            password: null,
+            region: null,
+            phone: null
         }
     },
     methods: {
@@ -52,7 +52,7 @@ export default {
                     email: this.email,
                     password: this.password,
                     region: this.region,
-                    phone: this.phone
+                    phone: this.phone.toString()
                 };
            
                 const response = await fetch('https://ecoms.zeabur.app/api/v1/auth/register', {
@@ -65,7 +65,6 @@ export default {
 
                 const result = await response.json();
                 console.log("Success:", result);
-
             } catch (error) {
                 console.error("Error:", error);
             }
