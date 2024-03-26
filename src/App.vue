@@ -22,7 +22,7 @@ export default {
     }
 
   #page-wrap {
-    margin: auto;
+    margin: 100px auto 100px auto;
     max-width: 800px;
     min-height: 100vh;
   }
