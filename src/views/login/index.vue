@@ -37,6 +37,7 @@ export default {
 
                 const response = await fetch('https://ecoms.zeabur.app/api/v1/auth/login', {
                         method: 'POST',
+                        credentials: "include",
                         headers: {
                             'Content-Type': 'application/json',
                         },

@@ -2,31 +2,56 @@
 <template>
     <div id="page-wrap">
         <div class="from">
-            <form @submit.prevent="handleSubmit">
+            <form class="row g-3">
                 <span id="form-title">Register</span>
-                <div class="wrap-input">
-                    <label for="name">Username</label>
-                    <input v-model="username" class="input" type="text" placeholder="Type your username" required>
+                <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4">
                 </div>
-                <div class="wrap-input">
-                    <label for="name">Email</label>
-                    <input v-model="email" class="input" type="email" placeholder="Type your email" required>
+                <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="inputPassword4">
                 </div>
-                <div class="wrap-input">
-                    <label for="name">Password</label>
-                    <input v-model="password" class="input" type="password" placeholder="Type your password" required>
+                <div class="col-md-6">
+                    <label for="inputName" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="inputName">
                 </div>
-                <div class="wrap-input">
-                    <label for="password">Region</label>
-                    <input v-model="region" class="input" type="text" placeholder="Type your password" required>
+                <div class="col-md-6">
+                    <label for="inputPhone" class="form-label">PhoneNumber</label>
+                    <input type="text" class="form-control" id="inputPhone">
                 </div>
-                <div class="wrap-input">
-                    <label for="number">Phone</label>
-                    <input v-model="phone" class="input" type="number" placeholder="Type your password" required>
+                <div class="col-12">
+                    <label for="inputAddress" class="form-label">FullAddress</label>
+                    <input type="text" class="form-control" id="inputAddress">
                 </div>
-                <!-- <div id="text-right">Forgot Password?</div> -->
-                <button> Register </button>
-            </form>
+                <div class="col-md-6">
+                    <label for="inputProvinci" class="form-label"> Province </label>
+                    <input type="text" class="form-control" id="inputProvince">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputCity" class="form-label">City</label>
+                    <input type="text" class="form-control" id="inputCity">
+                </div>
+                <div class="col-md-6">
+                    <label for="inputSubdistrict" class="form-label"> Subdistrict </label>
+                    <input type="text" class="form-control" id="inputSubdistrict">
+                </div> 
+                <div class="col-md-6">
+                    <label for="inputWard" class="form-label"> Ward </label>
+                    <input type="text" class="form-control" id="inputWard">
+                </div>
+                <div class="col-12">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                </form>
         </div>
     </div>
 </template>
