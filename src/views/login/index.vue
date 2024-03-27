@@ -2,18 +2,19 @@
 <template>
     <div id="page-wrap">
         <div class="from">
-            <form @submit.prevent='handleSubmitLogin'>
-                <span id="form-title">Login</span>
-                <div class="wrap-input">
-                    <label for="email">Email</label>
-                    <input v-model="email" class="input" type="email" placeholder="Type your email" required>
+            <form class="row g-3" @submit.prevent="handleSubmitLogin">
+                <span id="form-title"> Login </span>
+                <div class="col-12">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input v-model="inputEmail" type="email" class="form-control" id="inputEmail4" required>
                 </div>
-                <div class="wrap-input">
-                    <label for="password">Password</label>
-                    <input v-model="password" class="input" type="password" placeholder="Type your password" required>
+                <div class="col-12">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input v-model="inputPassword" type="password" class="form-control" id="inputPassword4" required>
                 </div>
-                <!-- <div id="text-right">Forgot Password?</div> -->
-                <button> Login </button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
             </form>
         </div>
     </div>
@@ -23,18 +24,17 @@
 export default {
     data() {
         return {
-            email: null,
-            password: null
+            inputEmail: null,
+            inputPassword: null
         }
     },
     methods: {
         async handleSubmitLogin() {
             try {
                 const data = {
-                    email: this.email,
-                    password: this.password
+                    email: this.inputEmail,
+                    password: this.inputPassword
                 }
-
                 const response = await fetch('https://ecoms.zeabur.app/api/v1/auth/login', {
                         method: 'POST',
                         credentials: "include",
@@ -46,7 +46,7 @@ export default {
 
                 const result = await response.json();
                 console.log("Success:", result);
-                    
+                
             } catch (error) {
                 console.error("Error:", error);
             }
