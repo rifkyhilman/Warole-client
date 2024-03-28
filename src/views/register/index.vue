@@ -11,6 +11,7 @@
                 <div class="col-md-6">
                     <label for="inputPassword4" class="form-label">Password</label>
                     <input v-model="inputPassword" type="password" class="form-control" id="inputPassword4" required>
+                    <div id="passwordRequired" class="form-text">8 - 14 characters</div>
                 </div>
                 <div class="col-md-6">
                     <label for="inputName" class="form-label">Username</label>
@@ -40,14 +41,6 @@
                     <label for="inputAddress" class="form-label">FullAddress</label>
                     <input v-model="inputFulladress" type="text" class="form-control" id="inputAddress" required>
                 </div>
-                <!-- <div class="col-12">
-                    <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Check me out
-                    </label>
-                    </div>
-                </div> -->
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Register</button>
                 </div>
