@@ -18,6 +18,11 @@ export default createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/register/index.vue')
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: () => import('../views/cart/index.vue')
     }
   ],
 });
