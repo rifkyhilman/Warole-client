@@ -2,18 +2,21 @@
 <template>
     <div id="page-wrap">
         <div class="from">
-            <form class="row g-3" method="post">
+            <form class="row g-3" method="post" @submit.prevent="validationForm">
                 <span id="form-title"> Login </span>
                 <div class="col-12" >
                     <span for="inputEmail" class="form-label">Email</span>
-                    <input name="inputEmail" type="email" class="form-control" :class="{'is-invalid' : emailError}" id="inputEmail4" required>
+                    <input name="inputEmail" v-model="inputEmail" type="email" class="form-control" :class="{'is-invalid' : emailError}" id="inputEmail4">
                     <div class="invalid-feedback">
-                        Please choose a username.
+                        {{ msgEmail }}
                     </div>
                 </div>
                 <div class="col-12">
                     <span for="inputPassword" class="form-label">Password</span>
-                    <input name="inputPassword" type="password" class="form-control" id="inputPassword4" minlength="8" maxlength="14" required>
+                    <input name="inputPassword" v-model="inputPassword" type="password" class="form-control" :class="{'is-invalid' : passwordError}">
+                    <div class="invalid-feedback">
+                        {{ msgPassword }}
+                    </div>
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Login</button>
@@ -28,16 +31,44 @@
 export default {
     data() {
         return {
-            emailError: false
+            inputEmail: null,
+            inputPassword: null,
+            emailError: false,
+            msgEmail: null,
+            passwordError: false,
+            msgPassword: null
         }
     },
     methods: {
-        async handleSubmitLogin() {
-            try {
-                const data = {
+        validationForm() {
+            
+            const data = {
                     email: this.inputEmail,
                     password: this.inputPassword
                 }
+            
+            const regex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+            
+            if(!data.email) {
+                this.emailError = true
+                this.msgEmail = "This field is required"
+            } else if(!regex.test(data.email)) {
+                this.emailError = true
+                this.msgEmail = "This field must be a valid email"
+            } else if(!data.password) {
+                this.emailError = false
+                this.passwordError = true
+                this.msgPassword = "This field is required"
+            } else {   
+                this.emailError = false
+                this.passwordError = false
+                console.log('kena hit nih brokk')
+            }
+
+        },
+        async handleSubmitLogin(data) {
+            try {
+
                 const response = await fetch('https://ecoms.zeabur.app/api/v1/auth/login', {
                          method: 'POST',
                          credentials: "include",
